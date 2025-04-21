@@ -1,14 +1,12 @@
 package lk.ijse.gdse.project.hibernate_project.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDate;
+
 import java.util.List;
 
 @AllArgsConstructor
@@ -16,13 +14,15 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "patient")
-public class Patient {
+public class Patient implements SuperEntity {
     @Id
     private String id;
     private String name;
-    private Date dateOfBirth;
-    private String contact;
+    private String gender;
+    private LocalDate dateOfBirth;
     private String medicalHistory;
+    private String address;
+    private String contact;
 
     @OneToMany(mappedBy = "patient")
     private List<Payment> payments;
@@ -32,4 +32,17 @@ public class Patient {
 
     @OneToMany(mappedBy = "patient")
     private List<Enrollment> enrollments;
+
+    public Patient(String id, String name, String gender, LocalDate dateOfBirth, String medicalHistory, String address, String contact) {
+        this.id = id;
+        this.name = name;
+        this.gender = gender;
+        this.dateOfBirth = dateOfBirth;
+        this.medicalHistory = medicalHistory;
+        this.address = address;
+        this.contact = contact;
+    }
+
+
+
 }

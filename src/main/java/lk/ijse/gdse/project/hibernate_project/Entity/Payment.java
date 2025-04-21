@@ -24,5 +24,5 @@ public class Payment {
 
     @ManyToOne
     @JoinTable(name = "patient_id")
-    private Payment payment;
+    private Patient patient;
 }

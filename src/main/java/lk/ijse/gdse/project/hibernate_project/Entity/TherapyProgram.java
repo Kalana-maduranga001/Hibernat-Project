@@ -12,20 +12,20 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name = "therapy_program")
+@Table(name = "therapyProgram")
 public class TherapyProgram {
     @Id
     private String id;
     private String name;
     private BigDecimal fee;
 
-    @Column(name = "duration_(weeks)")
+    @Column(name = "duration(weeks)")
     private int duration;
 
     @ManyToOne
-    @JoinTable(name = "therapist_id")
+    @JoinTable(name = "therapistid")
     private Therapist therapist;
 
-    @OneToMany(mappedBy = "therapy_program")
+    @OneToMany(mappedBy = "therapyProgram")
     private List<Enrollment> enrollments;
 }

@@ -19,10 +19,10 @@ public class Enrollment {
     private Date date;
 
     @ManyToOne
-    @JoinTable(name = "patient_id")
+    @JoinColumn(name = "patient_id")
     private Patient patient;
 
     @ManyToOne
-    @JoinTable(name = "therapy_program_id")
+    @JoinColumn(name = "therapy_program_id")
     private TherapyProgram therapyProgram;
 }
