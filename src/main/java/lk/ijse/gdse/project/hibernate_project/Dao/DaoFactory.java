@@ -1,6 +1,7 @@
 package lk.ijse.gdse.project.hibernate_project.Dao;
 
 import lk.ijse.gdse.project.hibernate_project.Dao.custome.impl.PatientDaoImpl;
+import lk.ijse.gdse.project.hibernate_project.Dao.custome.impl.ProgramDaoImpl;
 import lk.ijse.gdse.project.hibernate_project.Dao.custome.impl.TherapistDaoImpl;
 
 public class DaoFactory {
@@ -26,6 +27,8 @@ public class DaoFactory {
                 return new PatientDaoImpl();
             case THERAPIST:
                 return new TherapistDaoImpl();
+            case PROGRAMME:
+                return new ProgramDaoImpl();
             default:
                 return null;
         }

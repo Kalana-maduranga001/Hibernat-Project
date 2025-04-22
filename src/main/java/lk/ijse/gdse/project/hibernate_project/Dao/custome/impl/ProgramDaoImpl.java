@@ -1,8 +1,8 @@
 package lk.ijse.gdse.project.hibernate_project.Dao.custome.impl;
 
-import lk.ijse.gdse.project.hibernate_project.Dao.custome.TherapistDao;
-import lk.ijse.gdse.project.hibernate_project.Entity.Patient;
-import lk.ijse.gdse.project.hibernate_project.Entity.Therapist;
+import lk.ijse.gdse.project.hibernate_project.Dao.custome.ProgramDao;
+
+import lk.ijse.gdse.project.hibernate_project.Entity.TherapyProgram;
 import lk.ijse.gdse.project.hibernate_project.bo.exeception.DuplicateException;
 import lk.ijse.gdse.project.hibernate_project.bo.exeception.NotFoundException;
 import lk.ijse.gdse.project.hibernate_project.config.FactoryConfiguration;
@@ -15,7 +15,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
-public class TherapistDaoImpl implements TherapistDao {
+public class ProgramDaoImpl implements ProgramDao {
 
     private final FactoryConfiguration factoryConfiguration = FactoryConfiguration.getInstance();
 
@@ -25,32 +25,34 @@ public class TherapistDaoImpl implements TherapistDao {
         Session session = factoryConfiguration.getSession();
 
         String lastPk = session
-                .createQuery("SELECT l.id FROM Therapist l ORDER BY l.id DESC", String.class)
+                .createQuery("SELECT l.id FROM TherapyProgram l ORDER BY l.id DESC", String.class)
                 .setMaxResults(1)
                 .uniqueResult();
 
-        if (lastPk != null) {
-            String substring = lastPk.substring(1);
-            int i = Integer.parseInt(substring);
+        if (lastPk != null && lastPk.startsWith("MT")) {
+            String numericPart = lastPk.substring(2);  // Skip "MT" and get the numeric part
+            int i = Integer.parseInt(numericPart);
             int newIdIndex = i + 1;
-            return String.format("T%03d", newIdIndex).describeConstable();
+            return String.format("MT%03d", newIdIndex).describeConstable();
         }
 
-        return "T001".describeConstable();
+        return "MT001".describeConstable();
     }
 
     @Override
-    public boolean save(Therapist therapist) {
+    public boolean save(TherapyProgram therapyProgram) {
+
         Session session = factoryConfiguration.getSession();
         Transaction transaction = session.beginTransaction();
+
         try {
 
-            Therapist existsTherapist = session.get(Therapist.class, therapist.getId());
+            TherapyProgram existsTherapist = session.get(TherapyProgram.class, therapyProgram.getId());
             if (existsTherapist != null) {
-                throw new DuplicateException("Customer id duplicated");
+                throw new DuplicateException("Therapist Program id duplicated");
             }
 
-            session.persist(therapist);
+            session.persist(therapyProgram);
             transaction.commit();
             return true;
         } catch (Exception e) {
@@ -64,11 +66,11 @@ public class TherapistDaoImpl implements TherapistDao {
     }
 
     @Override
-    public boolean update(Therapist therapist) {
+    public boolean update(TherapyProgram therapyProgram) {
         Session session = factoryConfiguration.getSession();
         Transaction transaction = session.beginTransaction();
         try {
-            session.merge(therapist);
+            session.merge(therapyProgram);
             transaction.commit();
             return true;
         } catch (Exception e) {
@@ -86,12 +88,12 @@ public class TherapistDaoImpl implements TherapistDao {
         Session session = factoryConfiguration.getSession();
         Transaction transaction = session.beginTransaction();
         try {
-            Therapist therapist = session.get(Therapist.class, pk);
-            if (therapist == null) {
+            TherapyProgram therapyProgram = session.get(TherapyProgram.class, pk);
+            if (therapyProgram == null) {
                 throw new NotFoundException("Customer not found");
             }
 
-            session.remove(therapist);
+            session.remove(therapyProgram);
             transaction.commit();
             return true;
         } catch (Exception e) {
@@ -105,22 +107,22 @@ public class TherapistDaoImpl implements TherapistDao {
     }
 
     @Override
-    public List<Therapist> getAll() {
+    public List<TherapyProgram> getAll() {
         Session session = factoryConfiguration.getSession();
-        Query<Therapist> query = session.createQuery("from Therapist", Therapist.class);
+        Query<TherapyProgram> query = session.createQuery("from TherapyProgram ", TherapyProgram.class);
         return query.list();
     }
 
 
     @Override
-    public Therapist findBy(String therapistId) throws SQLException, ClassNotFoundException {
-        Therapist therapist = null;
+    public TherapyProgram findBy(String programId) throws SQLException, ClassNotFoundException {
+        TherapyProgram therapyProgram = null;
         try (Session session = FactoryConfiguration.getInstance().getSession()) {
-            therapist = session.get(Therapist.class, therapistId);
+            therapyProgram = session.get(TherapyProgram.class, programId);
         } catch (Exception e) {
             e.printStackTrace();
-            throw new RuntimeException("Failed to fetch the Therapist by ID: " + therapistId);
+            throw new RuntimeException("Failed to fetch the Therapist by ID: " + programId);
         }
-        return therapist;
+        return therapyProgram;
     }
 }

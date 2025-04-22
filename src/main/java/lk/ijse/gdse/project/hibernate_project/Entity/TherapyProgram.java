@@ -13,7 +13,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "therapyProgram")
-public class TherapyProgram {
+public class TherapyProgram implements SuperEntity {
     @Id
     private String id;
     private String name;
@@ -28,4 +28,11 @@ public class TherapyProgram {
 
     @OneToMany(mappedBy = "therapyProgram")
     private List<Enrollment> enrollments;
+
+    public TherapyProgram(String id, String name, BigDecimal fee , int duration) {
+        this.id = id;
+        this.name = name;
+        this.fee = fee;
+        this.duration = duration;
+    }
 }

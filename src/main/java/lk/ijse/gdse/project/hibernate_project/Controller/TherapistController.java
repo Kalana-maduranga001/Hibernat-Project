@@ -233,7 +233,7 @@ public class TherapistController implements Initializable {
 
     private void loadTherapistNextId() throws SQLException, IOException {
         Optional<String> nextIdOptional = therapistBo.getNextId();
-        txtId.setText(nextIdOptional.orElse("P001"));
+        txtId.setText(nextIdOptional.orElse("T001"));
     }
 
 
