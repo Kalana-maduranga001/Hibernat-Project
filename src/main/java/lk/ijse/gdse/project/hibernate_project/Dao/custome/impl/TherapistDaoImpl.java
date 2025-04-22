@@ -1,8 +1,8 @@
 package lk.ijse.gdse.project.hibernate_project.Dao.custome.impl;
 
-import lk.ijse.gdse.project.hibernate_project.Dao.custome.PatientDao;
+import lk.ijse.gdse.project.hibernate_project.Dao.custome.TherapistDao;
 import lk.ijse.gdse.project.hibernate_project.Entity.Patient;
-
+import lk.ijse.gdse.project.hibernate_project.Entity.Therapist;
 import lk.ijse.gdse.project.hibernate_project.bo.exeception.DuplicateException;
 import lk.ijse.gdse.project.hibernate_project.bo.exeception.NotFoundException;
 import lk.ijse.gdse.project.hibernate_project.config.FactoryConfiguration;
@@ -10,20 +10,22 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
-public class PatientDaoImpl implements PatientDao {
+public class TherapistDaoImpl implements TherapistDao {
 
     private final FactoryConfiguration factoryConfiguration = FactoryConfiguration.getInstance();
 
+
     @Override
-    public Optional<String> getNextId(){
+    public Optional<String> getNextId() throws SQLException, IOException {
         Session session = factoryConfiguration.getSession();
 
         String lastPk = session
-                .createQuery("SELECT l.id FROM Patient l ORDER BY l.id DESC", String.class)
+                .createQuery("SELECT l.id FROM Therapist l ORDER BY l.id DESC", String.class)
                 .setMaxResults(1)
                 .uniqueResult();
 
@@ -38,17 +40,17 @@ public class PatientDaoImpl implements PatientDao {
     }
 
     @Override
-    public boolean save(Patient patient) {
+    public boolean save(Therapist therapist) {
         Session session = factoryConfiguration.getSession();
         Transaction transaction = session.beginTransaction();
         try {
 
-            Patient existsPatient = session.get(Patient.class, patient.getId());
-            if (existsPatient != null) {
+            Therapist existsTherapist = session.get(Therapist.class, therapist.getId());
+            if (existsTherapist != null) {
                 throw new DuplicateException("Customer id duplicated");
             }
 
-            session.persist(patient);
+            session.persist(therapist);
             transaction.commit();
             return true;
         } catch (Exception e) {
@@ -62,11 +64,11 @@ public class PatientDaoImpl implements PatientDao {
     }
 
     @Override
-    public boolean update(Patient patient) {
+    public boolean update(Therapist therapist) {
         Session session = factoryConfiguration.getSession();
         Transaction transaction = session.beginTransaction();
         try {
-            session.merge(patient);
+            session.merge(therapist);
             transaction.commit();
             return true;
         } catch (Exception e) {
@@ -84,12 +86,12 @@ public class PatientDaoImpl implements PatientDao {
         Session session = factoryConfiguration.getSession();
         Transaction transaction = session.beginTransaction();
         try {
-            Patient patient = session.get(Patient.class, pk);
-            if (patient == null) {
+            Therapist therapist = session.get(Therapist.class, pk);
+            if (therapist == null) {
                 throw new NotFoundException("Customer not found");
             }
 
-            session.remove(patient);
+            session.remove(therapist);
             transaction.commit();
             return true;
         } catch (Exception e) {
@@ -102,24 +104,23 @@ public class PatientDaoImpl implements PatientDao {
         }
     }
 
-
     @Override
-    public List<Patient> getAll() {
+    public List<Therapist> getAll() {
         Session session = factoryConfiguration.getSession();
-        Query<Patient> query = session.createQuery("from Patient", Patient.class);
+        Query<Therapist> query = session.createQuery("from Therapist", Therapist.class);
         return query.list();
     }
 
 
     @Override
-    public Patient findBy(String patientId) throws SQLException, ClassNotFoundException {
-        Patient patient = null;
+    public Therapist findBy(String therapistId) throws SQLException, ClassNotFoundException {
+        Therapist therapist = null;
         try (Session session = FactoryConfiguration.getInstance().getSession()) {
-            patient = session.get(Patient.class, patientId);
+            therapist = session.get(Therapist.class, therapistId);
         } catch (Exception e) {
             e.printStackTrace();
-            throw new RuntimeException("Failed to fetch the patient by ID: " + patientId);
+            throw new RuntimeException("Failed to fetch the Therapist by ID: " + therapistId);
         }
-        return patient;
+        return therapist;
     }
 }

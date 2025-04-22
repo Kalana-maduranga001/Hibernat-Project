@@ -2,6 +2,7 @@ package lk.ijse.gdse.project.hibernate_project.bo.custom;
 
 import lk.ijse.gdse.project.hibernate_project.bo.SuperBo;
 import lk.ijse.gdse.project.hibernate_project.bo.custom.impl.PatientBoImpl;
+import lk.ijse.gdse.project.hibernate_project.bo.custom.impl.TherapistBoImpl;
 
 public class BoFactory {
     public static BoFactory boFactory;
@@ -14,6 +15,7 @@ public class BoFactory {
     public <T extends SuperBo>T getBO(BOType boTypes){
         return  switch (boTypes){
             case PATIENT -> (T) new PatientBoImpl();
+            case THERAPIST -> (T) new TherapistBoImpl();
         };
     }
 }

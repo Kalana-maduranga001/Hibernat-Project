@@ -15,10 +15,11 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "therapist")
-public class Therapist {
+public class Therapist implements SuperEntity {
     @Id
     private String id;
     private String name;
+    private int age;
     private String specialization;
     private String contact;
 
@@ -28,9 +29,10 @@ public class Therapist {
     @OneToMany(mappedBy = "therapist")
     private List<TherapySession> therapySessions;
 
-    public Therapist(String id,String name, String specialization, String contact) {
+    public Therapist(String id ,String name ,int age, String specialization, String contact) {
         this.id = id;
         this.name = name;
+        this.age = age;
         this.specialization = specialization;
         this.contact = contact;
     }

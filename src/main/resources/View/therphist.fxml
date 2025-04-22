@@ -28,7 +28,7 @@
             <Font name="Calibri Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="42.0" layoutY="296.0" text="Therapist Address">
+      <Label layoutX="40.0" layoutY="296.0" text="Therapist Specialization">
          <font>
             <Font name="Calibri Bold" size="18.0" />
          </font>
@@ -53,12 +53,12 @@
             <Font name="Calibri Bold" size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtAge" layoutX="189.0" layoutY="218.0" prefHeight="26.0" prefWidth="119.0" promptText="00" style="-fx-background-color: #fff; -fx-border-color: #10ac84; -fx-border-width: 0 0 1px 0;">
+      <TextField fx:id="txtAge" layoutX="189.0" layoutY="212.0" prefHeight="36.0" prefWidth="178.0" promptText="00" style="-fx-background-color: #fff; -fx-border-color: #10ac84; -fx-border-width: 0 0 1px 0;">
          <font>
             <Font name="Calibri Bold" size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtAddress" layoutX="199.0" layoutY="291.0" prefHeight="26.0" prefWidth="480.0" promptText="No/-" style="-fx-background-color: #fff; -fx-border-color: #10ac84; -fx-border-width: 0 0 1px 0;">
+      <TextField fx:id="txtAddress" layoutX="224.0" layoutY="291.0" prefHeight="26.0" prefWidth="480.0" promptText="No/-" style="-fx-background-color: #fff; -fx-border-color: #10ac84; -fx-border-width: 0 0 1px 0;">
          <font>
             <Font name="Calibri Bold" size="18.0" />
          </font>
@@ -74,7 +74,7 @@
             <TableColumn fx:id="clmTherapistName" prefWidth="172.0" text="Therapist Name" />
             <TableColumn fx:id="cmlTherpistAge" prefWidth="99.20001220703125" text="Age" />
             <TableColumn fx:id="cmlContactNumber" prefWidth="204.00003051757812" text="Contact Number" />
-            <TableColumn fx:id="cmlAddress" prefWidth="271.99993896484375" text="Address" />
+            <TableColumn fx:id="cmlAddress" prefWidth="271.99993896484375" text="Specialization" />
          </columns>
       </TableView>
       <Button fx:id="btnSave" layoutX="461.0" layoutY="373.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnSaveCustomerOnAction" prefWidth="80.0" style="-fx-background-color: #ff0b55;" text="Save">

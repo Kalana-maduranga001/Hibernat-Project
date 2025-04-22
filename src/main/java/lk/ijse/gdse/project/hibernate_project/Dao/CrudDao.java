@@ -15,6 +15,5 @@ public interface CrudDao <T extends SuperEntity , ID> extends SuperDao {
      boolean update(T t);
      boolean deleteByPK(ID pk) throws Exception;
      List<T> getAll();
-     Optional<Patient> findById(ID pk);
 
 }

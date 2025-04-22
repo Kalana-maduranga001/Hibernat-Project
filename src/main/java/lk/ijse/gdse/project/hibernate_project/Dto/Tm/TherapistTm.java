@@ -13,6 +13,7 @@ import lombok.ToString;
 public class TherapistTm {
     private String id;
     private String name;
+    private int age;
     private String specialization;
     private String contact;
 }

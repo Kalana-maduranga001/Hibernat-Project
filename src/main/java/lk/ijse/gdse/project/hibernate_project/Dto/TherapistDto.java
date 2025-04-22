@@ -12,6 +12,7 @@ import lombok.ToString;
 public class TherapistDto {
     private String id;
     private String name;
+    private int age;
     private String specialization;
     private String contact;
 }
