@@ -5,19 +5,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import java.math.BigDecimal;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
 
-
-public class ProgramTm {
+public class PaymentTm {
 
     private String id;
-    private String name;
-    private double fee;
-    private int duration;
+    private String patientId;
+    private String programId;
+    private String date;
+    private String status;
+    private double amount;
 
 }

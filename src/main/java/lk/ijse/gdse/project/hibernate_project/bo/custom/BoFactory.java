@@ -1,10 +1,7 @@
 package lk.ijse.gdse.project.hibernate_project.bo.custom;
 
 import lk.ijse.gdse.project.hibernate_project.bo.SuperBo;
-import lk.ijse.gdse.project.hibernate_project.bo.custom.impl.PatientBoImpl;
-import lk.ijse.gdse.project.hibernate_project.bo.custom.impl.ProgramBoImpl;
-import lk.ijse.gdse.project.hibernate_project.bo.custom.impl.TherapistBoImpl;
-import lk.ijse.gdse.project.hibernate_project.bo.custom.impl.UserBoImpl;
+import lk.ijse.gdse.project.hibernate_project.bo.custom.impl.*;
 
 public class BoFactory {
     public static BoFactory boFactory;
@@ -20,6 +17,7 @@ public class BoFactory {
             case THERAPIST  ->  (T) new TherapistBoImpl();
             case  PROGRAMME ->  (T) new ProgramBoImpl();
             case USER       ->  (T) new UserBoImpl();
+            case PAYMENT    ->  (T) new PaymentBoImpl();
         };
     }
 }

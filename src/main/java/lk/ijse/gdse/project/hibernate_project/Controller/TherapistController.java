@@ -222,7 +222,7 @@ public class TherapistController implements Initializable {
                     therapistDto.getAge(),
                     therapistDto.getSpecialization(),
                     therapistDto.getContact()
-//                  therapistDto.getTherapistProgrammeId()
+
             );
             therapistTms.add(therapistTm);
         }
@@ -235,6 +235,7 @@ public class TherapistController implements Initializable {
         Optional<String> nextIdOptional = therapistBo.getNextId();
         txtId.setText(nextIdOptional.orElse("T001"));
     }
+
 
 
 }

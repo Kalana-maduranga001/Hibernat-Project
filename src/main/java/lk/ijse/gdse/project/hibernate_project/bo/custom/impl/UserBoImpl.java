@@ -14,9 +14,9 @@ import java.util.Optional;
 
 public class UserBoImpl implements UserBo {
 
-    public UserBoImpl() {
-        this.userDao = new UserDaoImpl();
-    }
+//    public UserBoImpl() {
+//        this.userDao = new UserDaoImpl();
+//    }
 
     UserDao userDao = (UserDao) DaoFactory.getInstance().getDao(DaoFactory.daoType.USER);
 

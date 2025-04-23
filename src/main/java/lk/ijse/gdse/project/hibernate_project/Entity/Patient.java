@@ -33,6 +33,8 @@ public class Patient implements SuperEntity {
     @OneToMany(mappedBy = "patient")
     private List<Enrollment> enrollments;
 
+
+
     public Patient(String id, String name, String gender, LocalDate dateOfBirth, String medicalHistory, String address, String contact) {
         this.id = id;
         this.name = name;

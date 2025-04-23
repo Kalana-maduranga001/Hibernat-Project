@@ -1,8 +1,6 @@
 package lk.ijse.gdse.project.hibernate_project.Dao;
 
-import lk.ijse.gdse.project.hibernate_project.Dao.custome.impl.PatientDaoImpl;
-import lk.ijse.gdse.project.hibernate_project.Dao.custome.impl.ProgramDaoImpl;
-import lk.ijse.gdse.project.hibernate_project.Dao.custome.impl.TherapistDaoImpl;
+import lk.ijse.gdse.project.hibernate_project.Dao.custome.impl.*;
 
 public class DaoFactory {
     private static DaoFactory daoFactory = new DaoFactory();
@@ -18,7 +16,7 @@ public class DaoFactory {
     }
 
     public enum daoType {
-        USER,THERAPIST,SESSION,PATIENT,PROGRAMME,
+        USER,THERAPIST,SESSION,PATIENT,PROGRAMME,PAYMENT
     }
 
     public SuperDao getDao(daoType type) {
@@ -29,6 +27,10 @@ public class DaoFactory {
                 return new TherapistDaoImpl();
             case PROGRAMME:
                 return new ProgramDaoImpl();
+            case USER:
+                return new UserDaoImpl();
+            case PAYMENT:
+                return new PaymentDaoImpl();
             default:
                 return null;
         }

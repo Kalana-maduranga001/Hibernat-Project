@@ -109,7 +109,7 @@ public class ProgrammeController implements Initializable {
 
         String programmeId = txtProgrammeId.getText();
         String programmeName = txtProgrammeName.getText();
-        BigDecimal price = new BigDecimal(txtFees.getText());
+        double price = Double.parseDouble(txtFees.getText().trim());
         int programmeDuration = Integer.parseInt(txtDuration.getText());
 
         ProgramDto programDto = new ProgramDto(programmeId, programmeName,  price ,programmeDuration);
@@ -130,7 +130,7 @@ public class ProgrammeController implements Initializable {
 
         String programmeId = txtProgrammeId.getText();
         String programmeName = txtProgrammeName.getText();
-        BigDecimal price = new BigDecimal(txtFees.getText());
+        double price = Double.parseDouble(txtFees.getText().trim());
         int programmeDuration = Integer.parseInt(txtDuration.getText());
 
         ProgramDto programDto = new ProgramDto(programmeId, programmeName,  price ,programmeDuration);

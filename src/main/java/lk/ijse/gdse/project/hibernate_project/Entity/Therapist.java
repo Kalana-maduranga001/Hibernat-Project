@@ -37,6 +37,7 @@ public class Therapist implements SuperEntity {
         this.contact = contact;
     }
 
+
 }
 
 

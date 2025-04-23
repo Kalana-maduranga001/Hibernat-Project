@@ -12,11 +12,14 @@ import java.math.BigDecimal;
 @Data
 @Entity
 @Table(name = "payment")
-public class Payment {
+public class Payment implements SuperEntity {
     @Id
     private String id;
+    private String patientId;
+    private String programId;
     private String date;
-    private BigDecimal amount;
+    private String status;
+    private double amount;
 
     @ManyToOne
     @JoinTable(name = "user_id")
@@ -25,4 +28,13 @@ public class Payment {
     @ManyToOne
     @JoinTable(name = "patient_id")
     private Patient patient;
+
+    public Payment(String id, String patientId, String programId, String date, String status, double amount) {
+        this.id = id;
+        this.patientId = patientId;
+        this.programId = programId;
+        this.date = date;
+        this.status = status;
+        this.amount = amount;
+    }
 }

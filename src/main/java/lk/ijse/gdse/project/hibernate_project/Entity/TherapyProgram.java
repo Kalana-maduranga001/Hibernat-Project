@@ -17,7 +17,7 @@ public class TherapyProgram implements SuperEntity {
     @Id
     private String id;
     private String name;
-    private BigDecimal fee;
+    private double fee;
 
     @Column(name = "duration(weeks)")
     private int duration;
@@ -29,7 +29,7 @@ public class TherapyProgram implements SuperEntity {
     @OneToMany(mappedBy = "therapyProgram")
     private List<Enrollment> enrollments;
 
-    public TherapyProgram(String id, String name, BigDecimal fee , int duration) {
+    public TherapyProgram(String id, String name, double fee , int duration) {
         this.id = id;
         this.name = name;
         this.fee = fee;

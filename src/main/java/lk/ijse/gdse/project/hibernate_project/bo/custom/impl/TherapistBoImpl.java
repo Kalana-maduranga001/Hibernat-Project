@@ -2,9 +2,7 @@ package lk.ijse.gdse.project.hibernate_project.bo.custom.impl;
 
 import lk.ijse.gdse.project.hibernate_project.Dao.DaoFactory;
 import lk.ijse.gdse.project.hibernate_project.Dao.custome.TherapistDao;
-import lk.ijse.gdse.project.hibernate_project.Dto.PatientDto;
 import lk.ijse.gdse.project.hibernate_project.Dto.TherapistDto;
-import lk.ijse.gdse.project.hibernate_project.Entity.Patient;
 import lk.ijse.gdse.project.hibernate_project.Entity.Therapist;
 import lk.ijse.gdse.project.hibernate_project.bo.custom.TherapistBo;
 

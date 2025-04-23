@@ -94,8 +94,8 @@
          <columns>
             <TableColumn fx:id="clmProgrmmeId" prefWidth="192.00002479553223" text="Progrmme Id" />
             <TableColumn fx:id="clmProgrammeName" prefWidth="294.39996337890625" text="Progrmme Name" />
-            <TableColumn fx:id="clmDuration" prefWidth="184.00009155273438" text="Duration" />
-            <TableColumn fx:id="clmFees" prefWidth="157.5999755859375" text="Fees" />
+            <TableColumn fx:id="clmDuration" prefWidth="184.00009155273438" text="Duration(Year)" />
+            <TableColumn fx:id="clmFees" prefWidth="157.5999755859375" text="Fees(LKR)" />
          </columns>
       </TableView>
    </children>
