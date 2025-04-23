@@ -15,7 +15,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "user")
-public class User {
+public class User implements SuperEntity {
     @Id
     private String id;
     private String username;
@@ -24,4 +24,11 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<Payment> payments;
+
+    public User(String id, String username, String password, String role) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.role = role;
+    }
 }
