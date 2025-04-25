@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="registorAnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse.project.hibernate_project.Controller.RegsrationController">
+   <children>
+      <Label layoutX="237.0" layoutY="20.0" prefHeight="30.0" prefWidth="126.0" text="Ragistration">
+         <font>
+            <Font name="Calibri" size="25.0" />
+         </font>
+      </Label>
+      <Line endX="473.800048828125" endY="-1.52587890625E-5" layoutX="115.0" layoutY="65.0" startX="-100.0" stroke="#ff0b55" />
+      <TextField fx:id="txtUserId" layoutX="173.0" layoutY="87.0" prefHeight="38.0" prefWidth="254.0" promptText="                  Enter User Id" style="-fx-background-radius: 20; -fx-border-color: #FF0B55; -fx-border-radius: 20;">
+         <font>
+            <Font name="Calibri" size="17.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtUserName" layoutX="173.0" layoutY="140.0" prefHeight="38.0" prefWidth="254.0" promptText="               Enter User Name" style="-fx-background-radius: 20; -fx-border-color: #FF0B55; -fx-border-radius: 20;">
+         <font>
+            <Font name="Calibri" size="17.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtUserPassword" layoutX="174.0" layoutY="242.0" prefHeight="38.0" prefWidth="254.0" promptText="            Enter User Password" style="-fx-background-radius: 20; -fx-border-color: #FF0B55; -fx-border-radius: 20;">
+         <font>
+            <Font name="Calibri" size="17.0" />
+         </font>
+      </TextField>
+      <Button fx:id="tbtnRegistor" layoutX="250.0" layoutY="326.0" mnemonicParsing="false" onAction="#registorOnAction" prefHeight="35.0" prefWidth="102.0" style="-fx-background-radius: 10; -fx-border-color: #FF0B55; -fx-border-radius: 10;" text="Ragistor">
+         <font>
+            <Font name="Calibri Bold" size="18.0" />
+         </font>
+      </Button>
+      <Label layoutX="174.0" layoutY="200.0" prefHeight="22.0" prefWidth="62.0" text="Gender">
+         <font>
+            <Font name="Calibri Bold" size="18.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="cmbRoles" layoutX="240.0" layoutY="193.0" prefHeight="36.0" prefWidth="170.0" promptText="Roles" style="-fx-background-color: #FF0B55; -fx-border-color: #10ac84; -fx-border-width: 0 0 1px 0;" />
+   </children>
+</AnchorPane>
