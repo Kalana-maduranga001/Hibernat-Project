@@ -125,8 +125,6 @@ public class TherapySessionController implements Initializable {
         ArrayList<SessionDto> sessionDtos = (ArrayList<SessionDto>) sessionBo.getAll();
         ObservableList<SessionTm> sessionTms = FXCollections.observableArrayList();
 
-
-
         for (SessionDto sessionDto : sessionDtos) {
             PatientDto patient = sessionBo.findPatientByPK(sessionDto.getPatientId());
             TherapistDto therapist = sessionBo.findTherapistByPK(sessionDto.getTherapietid());

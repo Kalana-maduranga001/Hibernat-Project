@@ -87,9 +87,7 @@ public class HomePageController implements Initializable {
 
     @FXML
     void sessionOnAction(ActionEvent event) {
-
         navigateTo("/View/TheraphiSession.fxml");
-
     }
 
     @FXML
@@ -108,7 +106,6 @@ public class HomePageController implements Initializable {
 //            btnPationt.setDisable(false);
 //            btnPayment.setDisable(false);
 //        }else {
-//
 //            btnTheraphist.setDisable(true);
 //            imgTheraphist.setVisible(true);
 //            btnSesstion.setDisable(false);

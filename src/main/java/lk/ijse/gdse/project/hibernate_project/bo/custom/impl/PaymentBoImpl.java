@@ -6,6 +6,7 @@ import lk.ijse.gdse.project.hibernate_project.Dto.PatientDto;
 import lk.ijse.gdse.project.hibernate_project.Dto.PaymentDto;
 import lk.ijse.gdse.project.hibernate_project.Entity.Patient;
 import lk.ijse.gdse.project.hibernate_project.Entity.Payment;
+import lk.ijse.gdse.project.hibernate_project.Entity.TherapyProgram;
 import lk.ijse.gdse.project.hibernate_project.bo.custom.PaymentBo;
 
 import java.io.IOException;
@@ -80,9 +81,21 @@ public class PaymentBoImpl implements PaymentBo {
         }
     }
 
+
+    @Override
+    public TherapyProgram getProgramById(String id) throws SQLException, ClassNotFoundException {
+        return paymentDao.findProgramById(id);
+    }
+
+
     @Override
     public List<String> getAllPaymentIds() throws SQLException, IOException {
         return paymentDao.getAllIds();
+    }
+
+    @Override
+    public List<String> getAllProgramIds() throws SQLException, ClassNotFoundException {
+        return paymentDao.getAllprogramIds();
     }
 
 }

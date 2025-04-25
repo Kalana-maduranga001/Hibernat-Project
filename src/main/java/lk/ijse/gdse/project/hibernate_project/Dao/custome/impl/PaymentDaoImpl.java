@@ -4,6 +4,7 @@ import lk.ijse.gdse.project.hibernate_project.Dao.custome.PaymentDao;
 
 import lk.ijse.gdse.project.hibernate_project.Entity.Patient;
 import lk.ijse.gdse.project.hibernate_project.Entity.Payment;
+import lk.ijse.gdse.project.hibernate_project.Entity.TherapyProgram;
 import lk.ijse.gdse.project.hibernate_project.bo.exeception.DuplicateException;
 import lk.ijse.gdse.project.hibernate_project.bo.exeception.NotFoundException;
 import lk.ijse.gdse.project.hibernate_project.config.FactoryConfiguration;
@@ -36,6 +37,19 @@ public class PaymentDaoImpl implements PaymentDao {
         Session session = factoryConfiguration.getSession();
         Query<String> query = session.createQuery("SELECT p.id FROM Patient p", String.class);
         return query.list();
+    }
+
+    @Override
+    public List<String> getAllprogramIds() throws SQLException, ClassNotFoundException {
+        Session session = factoryConfiguration.getSession();
+        Query<String> query = session.createQuery("SELECT p.id FROM TherapyProgram p", String.class);
+        return query.list();
+    }
+
+    @Override
+    public TherapyProgram findProgramById(String id) throws SQLException, ClassNotFoundException {
+        Session session = factoryConfiguration.getSession();
+        return session.get(TherapyProgram.class, id);
     }
 
 

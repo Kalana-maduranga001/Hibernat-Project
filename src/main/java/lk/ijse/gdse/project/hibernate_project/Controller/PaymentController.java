@@ -14,6 +14,7 @@ import javafx.util.Duration;
 
 import lk.ijse.gdse.project.hibernate_project.Dto.PaymentDto;
 import lk.ijse.gdse.project.hibernate_project.Dto.Tm.PaymentTm;
+import lk.ijse.gdse.project.hibernate_project.Entity.TherapyProgram;
 import lk.ijse.gdse.project.hibernate_project.bo.custom.BOType;
 import lk.ijse.gdse.project.hibernate_project.bo.custom.BoFactory;
 import lk.ijse.gdse.project.hibernate_project.bo.custom.PaymentBo;
@@ -201,7 +202,9 @@ public class PaymentController implements Initializable {
         String programId = cmbProgrmmrId.getValue();
         String date      = txtDate.getValue().toString();
         String status    = txtState.getText();
-        double amount    = Double.parseDouble(getCalculatePayemntLable.getText());
+        String text = getCalculatePayemntLable.getText();
+        String numberOnly = text.replaceAll("[^\\d.]", "");
+        double amount = Double.parseDouble(numberOnly);
 
         PaymentDto paymentDTO = new PaymentDto(paymentId , patientId , programId , date , status, amount);
         boolean isSaved = paymentBo.save( paymentDTO);
@@ -225,7 +228,9 @@ public class PaymentController implements Initializable {
         String programId = cmbProgrmmrId.getValue();
         String date      = txtDate.getValue().toString();
         String status    = txtState.getText();
-        double amount    = Double.parseDouble(getCalculatePayemntLable.getText());
+        String text = getCalculatePayemntLable.getText();
+        String numberOnly = text.replaceAll("[^\\d.]", "");
+        double amount = Double.parseDouble(numberOnly);
 
         PaymentDto paymentDTO = new PaymentDto(paymentId , patientId , programId , date , status, amount);
         boolean isSaved = paymentBo.update( paymentDTO);
@@ -243,7 +248,25 @@ public class PaymentController implements Initializable {
 
     @FXML
     void btnCalculatePaymentOnAction(ActionEvent event) {
+        try {
+            double programFee = Double.parseDouble(txtProgramFee.getText());
+            double paidAmount = Double.parseDouble(txtPaiedAmount.getText());
 
+            double balance = programFee - paidAmount;
+            getCalculatePayemntLable.setText(String.format("Remaining: %.2f", balance));
+
+            if (balance == programFee || balance == 0) {
+                txtState.setText("Full Payment");
+            } else if (balance < programFee) {
+                txtState.setText("Half Payment");
+            } else if(balance > programFee) {
+                txtState.setText("give Customer Cash : " + balance);
+            }
+
+
+        } catch (NumberFormatException e) {
+        new Alert(Alert.AlertType.ERROR, "Invalid input! Please enter valid numbers.").show();
+    }
 
     }
 
@@ -263,13 +286,13 @@ public class PaymentController implements Initializable {
             cmbPatientID.setValue(paymentTM.getPatientId());
             txtState.setText(paymentTM.getStatus());
             cmbProgrmmrId.setValue(paymentTM.getProgramId());
-            getCalculatePayemntLable.setText(String.valueOf(paymentTM.getAmount()));
+            txtProgramFee.setText(String.valueOf(paymentTM.getAmount()));
             txtDate.setValue(LocalDate.parse(paymentTM.getDate()));
 
-            btnDelete.setDisable(false);
-            btnSave.setDisable(true);
-            btnClear.setDisable(false);
-            btnUpdate.setDisable(false);
+            btnDelete1.setDisable(false);
+            btnSave1.setDisable(true);
+            btnClear1.setDisable(false);
+            btnSave11.setDisable(false);
         }
     }
 
@@ -299,6 +322,7 @@ public class PaymentController implements Initializable {
             loadTable();
             loadPaymentNextId();
             loadCmb();
+            refreshPage();
 
             cmbPatientID.setOnAction(event -> {
                 String selectedId = cmbPatientID.getValue();
@@ -309,6 +333,22 @@ public class PaymentController implements Initializable {
                     } catch (Exception e) {
                         e.printStackTrace();
                         new Alert(Alert.AlertType.ERROR, "Failed to load patient name").show();
+                    }
+                }
+            });
+
+            cmbProgrmmrId.setOnAction(event -> {
+                String selectedProgramId = cmbProgrmmrId.getValue();
+                if (selectedProgramId != null) {
+                    try {
+                        TherapyProgram program = paymentBo.getProgramById(selectedProgramId);
+                        if (program != null) {
+                            txtProgramName.setText(program.getName());
+                            txtProgramFee.setText(String.valueOf(program.getFee()));
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        new Alert(Alert.AlertType.ERROR, "Failed to load Program details").show();
                     }
                 }
             });
@@ -365,8 +405,8 @@ public class PaymentController implements Initializable {
         txtDate.setValue(LocalDate.now());
 
         btnSave1.setDisable(false);
-        btnDelete1.setDisable(false);
-        btnSave11.setDisable(true); //update
+        btnDelete1.setDisable(true);
+        btnSave11.setDisable(true);
         btnClear1.setDisable(false);
         loadTable();
         loadPaymentNextId();
@@ -381,11 +421,12 @@ public class PaymentController implements Initializable {
             List<String> paymentIds = paymentBo.getAllPaymentIds();
             cmbPatientID.setItems(FXCollections.observableArrayList(paymentIds));
 
-//            List<String> programIds = paymentBo.getAllProgramIds();
+           List<String> programIds = paymentBo.getAllProgramIds();
+           cmbProgrmmrId.setItems(FXCollections.observableArrayList(programIds));
 
         } catch (Exception e) {
             e.printStackTrace();
-            new Alert(Alert.AlertType.ERROR, "Failed to load payment IDs into combo box").show();
+            new Alert(Alert.AlertType.ERROR, "Failed to load payment IDs or Program IDs into combo box").show();
         }
 
 
