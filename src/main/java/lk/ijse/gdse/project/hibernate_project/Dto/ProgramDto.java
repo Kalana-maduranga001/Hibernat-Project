@@ -19,6 +19,9 @@ public class ProgramDto {
     private String name;
     private double fee;
     private int duration;
+<<<<<<< HEAD
     private String therapiesId;
+=======
+>>>>>>> d8048a3c57b25da4dff1b669c5f8a2db5aa065e8
 
 }

@@ -12,7 +12,11 @@ import java.util.Date;
 @Data
 @Entity
 @Table(name = "therapy_session")
+<<<<<<< HEAD
 public class TherapySession implements SuperEntity {
+=======
+public class TherapySession {
+>>>>>>> d8048a3c57b25da4dff1b669c5f8a2db5aa065e8
     @Id
     private String id;
     private String notes;
@@ -28,4 +32,7 @@ public class TherapySession implements SuperEntity {
     @JoinTable(name = "therapist_id")
     private Therapist therapist;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> d8048a3c57b25da4dff1b669c5f8a2db5aa065e8

@@ -31,8 +31,11 @@ public class DaoFactory {
                 return new UserDaoImpl();
             case PAYMENT:
                 return new PaymentDaoImpl();
+<<<<<<< HEAD
             case SESSION:
                 return new SessionDaoImpl();
+=======
+>>>>>>> d8048a3c57b25da4dff1b669c5f8a2db5aa065e8
             default:
                 return null;
         }

@@ -46,8 +46,13 @@ public class TherapistController implements Initializable {
     @FXML
     private TableColumn<?, ?> clmTherapistName;
 
+<<<<<<< HEAD
 //    @FXML
 //    private ComboBox<?> cmbProgrmmrId;
+=======
+    @FXML
+    private ComboBox<?> cmbProgrmmrId;
+>>>>>>> d8048a3c57b25da4dff1b669c5f8a2db5aa065e8
 
     @FXML
     private TableColumn<TherapistTm, String> cmlAddress;
@@ -58,8 +63,13 @@ public class TherapistController implements Initializable {
     @FXML
     private TableColumn<TherapistTm, Integer> cmlTherpistAge;
 
+<<<<<<< HEAD
 //    @FXML
 //    private Label llblName;
+=======
+    @FXML
+    private Label llblName;
+>>>>>>> d8048a3c57b25da4dff1b669c5f8a2db5aa065e8
 
     @FXML
     private TableView<TherapistTm> tblTherapist;
