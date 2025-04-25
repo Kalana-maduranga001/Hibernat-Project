@@ -23,8 +23,8 @@ public class Therapist implements SuperEntity {
     private String specialization;
     private String contact;
 
-    @OneToMany(mappedBy = "therapist")
-    private List<TherapyProgram> programs;
+//    @OneToMany(mappedBy = "therapist")
+//    private List<TherapyProgram> programs;
 
     @OneToMany(mappedBy = "therapist")
     private List<TherapySession> therapySessions;

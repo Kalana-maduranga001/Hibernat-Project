@@ -22,17 +22,26 @@ public class TherapyProgram implements SuperEntity {
     @Column(name = "duration(weeks)")
     private int duration;
 
+
+
     @ManyToOne
-    @JoinTable(name = "therapistid")
+    @JoinColumn(name = "therapistId", referencedColumnName = "id", insertable = false, updatable = false)
     private Therapist therapist;
+
+    @Column(name = "therapistId")
+    private String therapistId;
+
 
     @OneToMany(mappedBy = "therapyProgram")
     private List<Enrollment> enrollments;
 
-    public TherapyProgram(String id, String name, double fee , int duration) {
+
+
+    public TherapyProgram(String id, String name, double fee , int duration ,String therapistId) {
         this.id = id;
         this.name = name;
         this.fee = fee;
         this.duration = duration;
+        this.therapistId = therapistId;
     }
 }

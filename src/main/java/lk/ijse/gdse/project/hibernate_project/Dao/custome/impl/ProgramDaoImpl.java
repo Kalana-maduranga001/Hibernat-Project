@@ -125,4 +125,13 @@ public class ProgramDaoImpl implements ProgramDao {
         }
         return therapyProgram;
     }
+
+    @Override
+    public List<String> getTherapistIds() throws SQLException, ClassNotFoundException {
+        Session session = factoryConfiguration.getSession();
+        Query<String> query = session.createQuery("SELECT p.id FROM Therapist p", String.class);
+        return query.list();
+    }
+
+
 }

@@ -19,5 +19,7 @@ public class ProgramTm {
     private String name;
     private double fee;
     private int duration;
+    private String therapistId;
+
 
 }

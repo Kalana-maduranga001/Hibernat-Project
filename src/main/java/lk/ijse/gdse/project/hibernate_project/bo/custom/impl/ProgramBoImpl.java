@@ -21,18 +21,14 @@ public class ProgramBoImpl implements ProgramBo {
         return programDao.getNextId();
     }
 
-    private String id;
-    private String name;
-    private BigDecimal fee;
-    private int duration;
-
     @Override
     public boolean save(ProgramDto programDto) {
-        return programDao.save(new TherapyProgram(programDto.getId(),
+        return programDao.save(new TherapyProgram(
+                programDto.getId(),
                 programDto.getName(),
                 programDto.getFee(),
-                programDto.getDuration()
-
+                programDto.getDuration(),
+                programDto.getTherapistId()
         ));
     }
 
@@ -42,8 +38,8 @@ public class ProgramBoImpl implements ProgramBo {
                 programDto.getId(),
                 programDto.getName(),
                 programDto.getFee(),
-                programDto.getDuration()
-
+                programDto.getDuration(),
+                programDto.getTherapistId()
         ));
     }
 
@@ -54,18 +50,28 @@ public class ProgramBoImpl implements ProgramBo {
 
     @Override
     public List<ProgramDto> getAll() throws SQLException, IOException {
-        List<TherapyProgram>programs = programDao.getAll();
-        List<ProgramDto> programDtos = new ArrayList<>();
-        for(TherapyProgram patient:programs){
+        List<TherapyProgram> entities = programDao.getAll();
+        List<ProgramDto> dtos = new ArrayList<>();
 
-            ProgramDto programDto = new ProgramDto();
-            programDto.setId(patient.getId());
-            programDto.setName(patient.getName());
-            programDto.setFee(patient.getFee());
-            programDto.setDuration(patient.getDuration());
-
-            programDtos.add(programDto);
+        for (TherapyProgram program : entities) {
+            dtos.add(new ProgramDto(
+                    program.getId(),
+                    program.getName(),
+                    program.getFee(),
+                    program.getDuration(),
+                    program.getTherapistId() // <- must be this
+            ));
         }
-        return programDtos;
+
+        return dtos;
     }
+
+    @Override
+    public List<String> getAllTherapistIds() throws SQLException, ClassNotFoundException {
+        return programDao.getTherapistIds();
+    }
+
+
+
+
 }

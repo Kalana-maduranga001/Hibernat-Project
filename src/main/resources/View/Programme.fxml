@@ -2,9 +2,7 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-
 <?import javafx.scene.control.ComboBox?>
-
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -95,10 +93,11 @@
       </Button>
       <TableView fx:id="tblProgrmme" layoutX="17.0" layoutY="429.0" onMouseClicked="#tblOnMouseClick" prefHeight="216.0" prefWidth="826.0">
          <columns>
-            <TableColumn fx:id="clmProgrmmeId" prefWidth="192.00002479553223" text="Progrmme Id" />
-            <TableColumn fx:id="clmProgrammeName" prefWidth="294.39996337890625" text="Progrmme Name" />
-            <TableColumn fx:id="clmDuration" prefWidth="184.00009155273438" text="Duration(Year)" />
-            <TableColumn fx:id="clmFees" prefWidth="157.5999755859375" text="Fees(LKR)" />
+            <TableColumn fx:id="clmProgrmmeId" prefWidth="166.39998817443848" text="Progrmme Id" />
+            <TableColumn fx:id="clmProgrammeName" prefWidth="203.20001220703125" text="Progrmme Name" />
+            <TableColumn fx:id="clmDuration" prefWidth="177.60000610351562" text="Duration(Week)" />
+            <TableColumn fx:id="clmFees" prefWidth="141.59991455078125" text="Fees(LKR)" />
+            <TableColumn fx:id="clmTherapyestIds" prefWidth="141.59991455078125" text="Therapyest Ids" />
          </columns>
       </TableView>
 
