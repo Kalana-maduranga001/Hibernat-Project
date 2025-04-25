@@ -70,9 +70,4 @@ public class PatientBoImpl implements PatientBo {
     }
 
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> d8048a3c57b25da4dff1b669c5f8a2db5aa065e8
 }

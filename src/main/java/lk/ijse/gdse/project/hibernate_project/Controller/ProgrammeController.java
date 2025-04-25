@@ -42,15 +42,14 @@ public class ProgrammeController implements Initializable {
     private Button btnUpdate;
 
     @FXML
-<<<<<<< HEAD
+
     private ComboBox<String> cmbTherapistId;
 
     @FXML
     private Label llblName;
 
     @FXML
-=======
->>>>>>> d8048a3c57b25da4dff1b669c5f8a2db5aa065e8
+
     private TableColumn<TherapyProgram, String> clmDuration;
 
     @FXML
@@ -120,14 +119,12 @@ public class ProgrammeController implements Initializable {
         String programmeName = txtProgrammeName.getText();
         double price = Double.parseDouble(txtFees.getText().trim());
         int programmeDuration = Integer.parseInt(txtDuration.getText());
-<<<<<<< HEAD
+
         String therapistId = cmbTherapistId.getValue();
 
         ProgramDto programDto = new ProgramDto(programmeId, programmeName,  price ,programmeDuration, therapistId);
-=======
 
-        ProgramDto programDto = new ProgramDto(programmeId, programmeName,  price ,programmeDuration);
->>>>>>> d8048a3c57b25da4dff1b669c5f8a2db5aa065e8
+
         boolean isSaved = programBo.save(programDto);
         if(isSaved){
             new Alert(Alert.AlertType.INFORMATION,"Therapy Programme Saved successfully").show();
@@ -147,14 +144,11 @@ public class ProgrammeController implements Initializable {
         String programmeName = txtProgrammeName.getText();
         double price = Double.parseDouble(txtFees.getText().trim());
         int programmeDuration = Integer.parseInt(txtDuration.getText());
-<<<<<<< HEAD
+
         String therapistId = cmbTherapistId.getValue();
 
         ProgramDto programDto = new ProgramDto(programmeId, programmeName,  price ,programmeDuration, therapistId);
-=======
 
-        ProgramDto programDto = new ProgramDto(programmeId, programmeName,  price ,programmeDuration);
->>>>>>> d8048a3c57b25da4dff1b669c5f8a2db5aa065e8
         boolean isUpdate = programBo.update(programDto);
         if(isUpdate){
             new Alert(Alert.AlertType.INFORMATION,"Therapy Programme Saved successfully").show();
@@ -250,12 +244,11 @@ public class ProgrammeController implements Initializable {
         loadTable();
     }
 
-<<<<<<< HEAD
+
     @FXML
     void cmbTherapistIdOnAction(ActionEvent event) {
 
     }
 
-=======
->>>>>>> d8048a3c57b25da4dff1b669c5f8a2db5aa065e8
+
 }

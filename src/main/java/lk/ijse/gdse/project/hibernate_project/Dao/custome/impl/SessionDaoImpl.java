@@ -106,7 +106,7 @@ public class SessionDaoImpl implements SessionDao {
     @Override
     public List<TherapySession> getAll() {
         Session session = factoryConfiguration.getSession();
-        Query<TherapySession> query = session.createQuery("from Therapist", TherapySession.class);
+        Query<TherapySession> query = session.createQuery("from TherapySession", TherapySession.class);
         return query.list();
     }
 

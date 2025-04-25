@@ -15,9 +15,6 @@ import lk.ijse.gdse.project.hibernate_project.Dto.PatientDto;
 import lk.ijse.gdse.project.hibernate_project.Dto.SessionDto;
 import lk.ijse.gdse.project.hibernate_project.Dto.TherapistDto;
 import lk.ijse.gdse.project.hibernate_project.Dto.Tm.SessionTm;
-import lk.ijse.gdse.project.hibernate_project.Dto.Tm.TherapistTm;
-import lk.ijse.gdse.project.hibernate_project.Entity.Patient;
-import lk.ijse.gdse.project.hibernate_project.Entity.Therapist;
 import lk.ijse.gdse.project.hibernate_project.bo.custom.*;
 
 import java.io.IOException;
@@ -25,7 +22,6 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
 

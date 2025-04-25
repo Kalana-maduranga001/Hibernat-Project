@@ -87,11 +87,8 @@ public class HomePageController implements Initializable {
 
     @FXML
     void sessionOnAction(ActionEvent event) {
-<<<<<<< HEAD
+
         navigateTo("/View/TheraphiSession.fxml");
-=======
-        navigateTo("/View/R");
->>>>>>> d8048a3c57b25da4dff1b669c5f8a2db5aa065e8
 
     }
 

@@ -244,23 +244,14 @@ public class PaymentController implements Initializable {
     @FXML
     void btnCalculatePaymentOnAction(ActionEvent event) {
 
-<<<<<<< HEAD
 
-
-
-=======
->>>>>>> d8048a3c57b25da4dff1b669c5f8a2db5aa065e8
     }
 
 
     @FXML
     void btnReportPaymentOnAction(ActionEvent event) {
 
-<<<<<<< HEAD
 
-
-=======
->>>>>>> d8048a3c57b25da4dff1b669c5f8a2db5aa065e8
     }
 
     @FXML

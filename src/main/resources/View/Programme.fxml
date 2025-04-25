@@ -2,10 +2,9 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<<<<<<< HEAD
+
 <?import javafx.scene.control.ComboBox?>
-=======
->>>>>>> d8048a3c57b25da4dff1b669c5f8a2db5aa065e8
+
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -102,7 +101,7 @@
             <TableColumn fx:id="clmFees" prefWidth="157.5999755859375" text="Fees(LKR)" />
          </columns>
       </TableView>
-<<<<<<< HEAD
+
       <ComboBox fx:id="cmbTherapistId" layoutX="208.0" layoutY="305.0" onAction="#cmbTherapistIdOnAction" prefHeight="36.0" prefWidth="160.0" />
       <Label fx:id="llblName" layoutX="394.0" layoutY="305.0" prefHeight="36.0" prefWidth="80.0" />
       <Label layoutX="52.0" layoutY="312.0" text="Therapyest id">
@@ -110,7 +109,6 @@
             <Font name="Calibri Bold" size="18.0" />
          </font>
       </Label>
-=======
->>>>>>> d8048a3c57b25da4dff1b669c5f8a2db5aa065e8
+
    </children>
 </AnchorPane>

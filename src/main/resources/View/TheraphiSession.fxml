@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<<<<<<< HEAD
+
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
@@ -120,17 +120,6 @@
          </children>
       </Pane>
    </children>
-=======
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="View.TheraphiSession"
-            prefHeight="400.0" prefWidth="600.0">
 
->>>>>>> d8048a3c57b25da4dff1b669c5f8a2db5aa065e8
 </AnchorPane>
