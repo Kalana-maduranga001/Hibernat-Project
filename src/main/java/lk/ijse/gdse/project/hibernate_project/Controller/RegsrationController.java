@@ -30,6 +30,9 @@ public class RegsrationController implements Initializable {
     private Button tbtnRegistor;
 
     @FXML
+    private Button tbtnBack;
+
+    @FXML
     private TextField txtUserId;
 
     @FXML
@@ -72,7 +75,7 @@ public class RegsrationController implements Initializable {
 
             try {
                 // Load the new FXML and replace current pane content
-                AnchorPane load = FXMLLoader.load(getClass().getResource("/view/HomePage.fxml"));
+                AnchorPane load = FXMLLoader.load(getClass().getResource("/view/LoginPage.fxml"));
                 registorAnchorPane.getChildren().clear();
                 registorAnchorPane.getChildren().add(load);
             } catch (IOException e) {
@@ -109,6 +112,21 @@ public class RegsrationController implements Initializable {
     private void loadTherapistNextId() throws SQLException, IOException {
         Optional<String> nextIdOptional = userBo.getNextId();
         txtUserId.setText(nextIdOptional.orElse("U001"));
+    }
+
+    @FXML
+    void BackOnAction(ActionEvent event) {
+
+        try {
+            // Load the new FXML and replace current pane content
+            AnchorPane load = FXMLLoader.load(getClass().getResource("/view/LoginPage.fxml"));
+            registorAnchorPane.getChildren().clear();
+            registorAnchorPane.getChildren().add(load);
+        } catch (IOException e) {
+            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, "Failed to load the homepage!").show();
+        }
+
     }
 
 }

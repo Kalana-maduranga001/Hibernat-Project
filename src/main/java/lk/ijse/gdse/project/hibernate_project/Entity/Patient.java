@@ -24,8 +24,8 @@ public class Patient implements SuperEntity {
     private String address;
     private String contact;
 
-    @OneToMany(mappedBy = "patient")
-    private List<Payment> payments;
+//    @OneToMany(mappedBy = "patient")
+//    private List<Payment> payments;
 
     @OneToMany(mappedBy = "patient")
     private List<TherapySession> therapySessions;

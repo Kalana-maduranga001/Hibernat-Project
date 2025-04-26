@@ -2,12 +2,15 @@ module lk.ijse.gdse.project.hibernate_project {
     requires javafx.controls;
     requires javafx.fxml;
     requires static lombok;
+
     requires jakarta.persistence;
     requires org.hibernate.orm.core;
     requires java.desktop;
 
 
     requires java.naming;
+    requires jbcrypt;
+
 
 
     opens lk.ijse.gdse.project.hibernate_project to javafx.fxml;

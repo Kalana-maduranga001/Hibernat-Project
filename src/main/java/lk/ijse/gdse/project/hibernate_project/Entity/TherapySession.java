@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @AllArgsConstructor
@@ -19,10 +20,8 @@ public class TherapySession implements SuperEntity {
 
     @Id
     private String id;
-    private String notes;
 
-    @Column(name = "date")
-    private Date date;
+    private LocalDate date;
 
     @ManyToOne
     @JoinTable(name = "patient_id")
@@ -31,4 +30,9 @@ public class TherapySession implements SuperEntity {
     @ManyToOne
     @JoinTable(name = "therapist_id")
     private Therapist therapist;
+
+    @ManyToOne
+    @JoinColumn(name = "program_id")
+    private TherapyProgram program;
+
 }

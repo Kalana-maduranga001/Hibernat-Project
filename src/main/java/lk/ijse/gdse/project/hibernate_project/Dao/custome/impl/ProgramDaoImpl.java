@@ -113,6 +113,18 @@ public class ProgramDaoImpl implements ProgramDao {
         return query.list();
     }
 
+    @Override
+    public Optional<TherapyProgram> findById(String s) {
+        Session session = factoryConfiguration.getSession();
+        TherapyProgram therapyProgram = session.get(TherapyProgram.class, s);
+        session.close();
+
+        if (therapyProgram == null) {
+            return Optional.empty();
+        }
+        return Optional.of(therapyProgram);
+    }
+
 
     @Override
     public TherapyProgram findBy(String programId) throws SQLException, ClassNotFoundException {

@@ -31,7 +31,7 @@
             <Font name="Calibri" size="17.0" />
          </font>
       </TextField>
-      <Button fx:id="tbtnRegistor" layoutX="250.0" layoutY="326.0" mnemonicParsing="false" onAction="#registorOnAction" prefHeight="35.0" prefWidth="102.0" style="-fx-background-radius: 10; -fx-border-color: #FF0B55; -fx-border-radius: 10;" text="Ragistor">
+      <Button fx:id="tbtnRegistor" layoutX="189.0" layoutY="326.0" mnemonicParsing="false" onAction="#registorOnAction" prefHeight="35.0" prefWidth="102.0" style="-fx-background-radius: 10; -fx-border-color: #FF0B55; -fx-border-radius: 10;" text="Ragistor">
          <font>
             <Font name="Calibri Bold" size="18.0" />
          </font>
@@ -42,5 +42,10 @@
          </font>
       </Label>
       <ComboBox fx:id="cmbRoles" layoutX="240.0" layoutY="193.0" prefHeight="36.0" prefWidth="170.0" promptText="Roles" style="-fx-background-color: #FF0B55; -fx-border-color: #10ac84; -fx-border-width: 0 0 1px 0;" />
+      <Button fx:id="tbtnBack" layoutX="312.0" layoutY="326.0" mnemonicParsing="false" onAction="#BackOnAction" prefHeight="35.0" prefWidth="102.0" style="-fx-background-radius: 10; -fx-border-color: #FF0B55; -fx-border-radius: 10;" text="Back">
+         <font>
+            <Font name="Calibri Bold" size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

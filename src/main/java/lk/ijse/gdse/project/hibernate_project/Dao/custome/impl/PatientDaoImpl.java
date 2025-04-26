@@ -110,6 +110,18 @@ public class PatientDaoImpl implements PatientDao {
         return query.list();
     }
 
+    @Override
+    public Optional<Patient> findById(String s) {
+        Session session = factoryConfiguration.getSession();
+        Patient patient = session.get(Patient.class, s);
+        session.close();
+
+        if (patient == null) {
+            return Optional.empty();
+        }
+        return Optional.of(patient);
+    }
+
 
     @Override
     public Patient findBy(String patientId) throws SQLException, ClassNotFoundException {

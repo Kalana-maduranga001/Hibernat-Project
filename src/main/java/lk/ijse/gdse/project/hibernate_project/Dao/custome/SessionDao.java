@@ -1,11 +1,10 @@
 package lk.ijse.gdse.project.hibernate_project.Dao.custome;
-
 import lk.ijse.gdse.project.hibernate_project.Dao.CrudDao;
-
 import lk.ijse.gdse.project.hibernate_project.Entity.TherapySession;
 
-import java.sql.SQLException;
+import java.util.List;
+
 
 public interface SessionDao extends CrudDao<TherapySession , String> {
-     TherapySession findBy(String sessionId) throws SQLException, ClassNotFoundException;
+     List<TherapySession> findSessionsByTherapistId(String therapistId);
 }

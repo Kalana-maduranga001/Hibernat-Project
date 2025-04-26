@@ -31,7 +31,6 @@ public class DaoFactory {
                 return new UserDaoImpl();
             case PAYMENT:
                 return new PaymentDaoImpl();
-
             case SESSION:
                 return new SessionDaoImpl();
 

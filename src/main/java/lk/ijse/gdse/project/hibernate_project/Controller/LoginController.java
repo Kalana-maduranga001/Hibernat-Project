@@ -3,16 +3,23 @@ package lk.ijse.gdse.project.hibernate_project.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import lk.ijse.gdse.project.hibernate_project.Dto.UserDto;
+import lk.ijse.gdse.project.hibernate_project.bo.custom.BOType;
+import lk.ijse.gdse.project.hibernate_project.bo.custom.BoFactory;
+import lk.ijse.gdse.project.hibernate_project.bo.custom.UserBo;
+import lk.ijse.gdse.project.hibernate_project.util.CurrentUser;
+
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class LoginController {
+public class LoginController implements Initializable {
 
     @FXML
     private AnchorPane LoginAnchorPane;
@@ -33,55 +40,53 @@ public class LoginController {
     private Pane userNamePasswordAnchorePane;
 
     @FXML
+    private RadioButton radioShow;
+
+    @FXML
+    private TextField txtPassword1;
+
+    private UserBo userBO = BoFactory.getInstance().getBO(BOType.USER);
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        txtPassword1.managedProperty().bind(radioShow.selectedProperty());
+        txtPassword1.visibleProperty().bind(radioShow.selectedProperty());
+
+        txtPassword.managedProperty().bind(radioShow.selectedProperty().not());
+        txtPassword.visibleProperty().bind(radioShow.selectedProperty().not());
+
+        txtPassword1.textProperty().bindBidirectional(txtPassword.textProperty());
+    }
+
+    @FXML
     void loginOnAction(ActionEvent event) throws IOException {
 
-        LoginAnchorPane.getChildren().clear();
-        AnchorPane load = FXMLLoader.load(getClass().getResource("/view/HomePage.fxml"));
-        LoginAnchorPane.getChildren().add(load);
+//        Node node = FXMLLoader.load(getClass().getResource("/view/homepage.fxml"));  // Load the homepage view
+//        LoginAnchorPane.getChildren().setAll(node);
 
-        HomePageController.isAdmin = true;
+        String username = txtName.getText();
+        String password = radioShow.isSelected() ? txtPassword1.getText() : txtPassword.getText();
 
-//        try {
-//            String username = txtName.getText();
-//            String password = txtPassword.getText();
-//
-//            txtName.setStyle(txtName.getStyle() + ";-fx-border-color: #7367F0;");
-//            txtPassword.setStyle(txtPassword.getStyle() + ";-fx-border-color: #7367F0;");
-//
-//            String namePattern = "^[A-Za-z ]+$";
-//            String passwordPattern = "^[A-Za-z0-9]+$";
-//
-//            boolean isValidName = username.matches(namePattern);
-//            boolean isValidPassword = password.matches(passwordPattern);
-//
-//            if (!isValidName) {
-//                System.out.println(txtName.getStyle());
-//                txtName.setStyle(txtName.getStyle() + ";-fx-border-color: red;");
-//            }
-//
-//            if (!isValidPassword) {
-//                System.out.println(txtPassword.getStyle());
-//                txtPassword.setStyle(txtPassword.getStyle() + ";-fx-border-color: red;");
-//            }
-//
-//            if (isValidName && isValidPassword) {
-//                if ((username.equals("admin") && password.equals("1234")||
-//                        (username.equals("user") && password.equals("1234")))){
-//                    if (username.equals("admin")) {
-//                        HomePageController.isAdmin = true;
-//                    }else {
-//                        HomePageController.isAdmin = false;
-//                    }
-//                    LoginAnchorPane.getChildren().clear();
-//                    AnchorPane load = FXMLLoader.load(getClass().getResource("/view/HomePage.fxml"));
-//                    LoginAnchorPane.getChildren().add(load);
-//                } else {
-//                    new Alert(Alert.AlertType.ERROR, "Invalid username or password ").show();
-//                }
-//            }
-//        } catch (Exception e) {
-//            new Alert(Alert.AlertType.ERROR, "LoginPage Not Found").show();
-//        }
+        if (username.isEmpty() || password.isEmpty()) {
+            showAlert(Alert.AlertType.WARNING, "Validation Error", "Username and password must not be empty.");
+            return;
+        }
+
+        try {
+            boolean isValid = userBO.validateLogin(username, password);  // Validate user login
+
+            if (isValid) {
+                UserDto loggedInUser = userBO.getUserByUsername(username);  // Retrieve user data
+                CurrentUser.setCurrentUser(loggedInUser);  // Set the logged-in user in CurrentUser class
+                Node node = FXMLLoader.load(getClass().getResource("/view/homepage.fxml"));  // Load the homepage view
+                LoginAnchorPane.getChildren().setAll(node);  // Replace the current content with the homepage view
+            } else {
+                showAlert(Alert.AlertType.ERROR, "Login Failed", "Invalid username or password.");  // Show error if login fails
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Login Error", "An error occurred while trying to log in.");
+        }
 
     }
 
@@ -90,6 +95,14 @@ public class LoginController {
         LoginAnchorPane.getChildren().clear();
         AnchorPane load = FXMLLoader.load(getClass().getResource("/view/Registration.fxml"));
         LoginAnchorPane.getChildren().add(load);
+    }
+
+    private void showAlert(Alert.AlertType type, String title, String message) {
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
 }

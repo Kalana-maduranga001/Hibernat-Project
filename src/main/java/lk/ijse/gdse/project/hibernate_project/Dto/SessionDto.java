@@ -5,24 +5,17 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import java.util.Date;
+import java.time.LocalDate;
+
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
 public class SessionDto {
-    private String id;
-    private Date date;
-    private String notes;
+    private String sessionId;
+    private LocalDate sessionDate;
     private String patientId;
-    private String therapietid;
-
-    public SessionDto(String sessionid, String sessionDate, String program, String patient, String therapist) {
-        this.id = sessionid;
-        this.date = new Date(Long.parseLong(sessionDate));
-        this.notes = program;
-        this.patientId = patient;
-        this.therapietid = therapist;
-    }
+    private String therapistId;
+    private String programId;
 }

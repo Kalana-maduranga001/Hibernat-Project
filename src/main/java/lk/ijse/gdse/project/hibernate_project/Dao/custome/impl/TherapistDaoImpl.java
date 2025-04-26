@@ -111,6 +111,18 @@ public class TherapistDaoImpl implements TherapistDao {
         return query.list();
     }
 
+    @Override
+    public Optional<Therapist> findById(String s) {
+        Session session = factoryConfiguration.getSession();
+        Therapist therapist = session.get(Therapist.class, s);
+        session.close();
+
+        if (therapist == null) {
+            return Optional.empty();
+        }
+        return Optional.of(therapist);
+    }
+
 
     @Override
     public Therapist findBy(String therapistId) throws SQLException, ClassNotFoundException {

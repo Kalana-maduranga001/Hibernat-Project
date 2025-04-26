@@ -143,4 +143,9 @@ public class PaymentDaoImpl implements PaymentDao {
         Query<Payment> query = session.createQuery("from Payment ", Payment.class);
         return query.list();
     }
+
+    @Override
+    public Optional<Payment> findById(String s) {
+        return Optional.empty();
+    }
 }

@@ -21,20 +21,11 @@ public class Payment implements SuperEntity {
     private String status;
     private double amount;
 
-    @ManyToOne
-    @JoinTable(name = "user_id")
-    private User user;
 
-    @ManyToOne
-    @JoinTable(name = "patient_id")
-    private Patient patient;
 
-    public Payment(String id, String patientId, String programId, String date, String status, double amount) {
-        this.id = id;
-        this.patientId = patientId;
-        this.programId = programId;
-        this.date = date;
-        this.status = status;
-        this.amount = amount;
-    }
+//    @ManyToOne
+//    @JoinTable(name = "patient_id")
+//    private Patient patient;
+
+
 }

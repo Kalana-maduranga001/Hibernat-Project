@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
@@ -13,9 +14,9 @@ import java.util.Date;
 @ToString
 
 public class SessionTm {
-    private String id;
-    private Date date;
-    private String programid;
+    private String sessionId;
+    private LocalDate sessionDate;
     private String patientId;
-    private String therapietid;
+    private String therapistId;
+    private String programId;
 }
